@@ -7,10 +7,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDatabase } from './in-memory-database';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
     declarations: [
-      AppComponent
+      AppComponent,
+      HomeComponent
     ],
     imports: [
       BrowserModule,
