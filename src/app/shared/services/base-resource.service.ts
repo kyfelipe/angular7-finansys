@@ -9,7 +9,11 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
     
     protected http: HttpClient;
 
-    constructor(protected apiPath: string, protected injector: Injector) {
+		constructor(
+			protected apiPath: string, 
+			protected injector: Injector,
+			protected jsonDataToResourceFn: (jsonData: any) => T
+		) {
 		this.http = injector.get(HttpClient);
 	}
 
@@ -54,12 +58,14 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
     
     protected jsonDataToResources(jsonData: any[]): T[] {
 		const categories: T[] = [];
-		jsonData.forEach(element => categories.push(element as T));
+		jsonData.forEach(
+			element => categories.push(this.jsonDataToResourceFn(element))
+		);
 		return categories;
 	}
 	
 	protected jsonDataToResource(jsonData: any): T {
-		return jsonData as T;
+		return this.jsonDataToResourceFn(jsonData);
 	}
 
 	protected handleError(error: any): Observable<any> {

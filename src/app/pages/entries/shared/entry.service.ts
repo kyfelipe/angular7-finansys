@@ -11,8 +11,11 @@ import { BaseResourceService } from 'src/app/shared/services/base-resource.servi
 })
 export class EntryService extends BaseResourceService<Entry> {
 
-	constructor(protected injector: Injector, private categoryService: CategoryService) {
-		super('api/entries', injector);
+	constructor(
+		protected injector: Injector,
+		private categoryService: CategoryService
+	) {
+		super('api/entries', injector, Entry.fromJSON);
 	}
 
 	public create(entry: Entry): Observable<Entry> {
@@ -31,15 +34,5 @@ export class EntryService extends BaseResourceService<Entry> {
 				return super.update(entry);
 			})
 		);
-	}
-
-	protected jsonDataToResources(jsonData: any[]): Entry[] {
-		const entries: Entry[] = [];
-		jsonData.forEach(element => entries.push(Entry.fromJSON(element)));
-		return entries;
-	}
-	
-	protected jsonDataToResource(jsonData: any): Entry {
-		return Entry.fromJSON(jsonData);
 	}
 }
