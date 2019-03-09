@@ -19,23 +19,23 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
 
     public getAll(): Observable<T[]> {
 		return this.http.get(this.apiPath).pipe(
-			catchError(this.handleError),
-			map(this.jsonDataToResources)
+			map(this.jsonDataToResources.bind(this)),
+			catchError(this.handleError)
 		);
 	}
 
 	public getById(id: number): Observable<T> {
 		const url: string = `${this.apiPath}/${id}`;
 		return this.http.get(url).pipe(
-			catchError(this.handleError),
-			map(this.jsonDataToResource)
+			map(this.jsonDataToResource.bind(this)),
+			catchError(this.handleError)
 		);
 	}
 
 	public create(resource: T): Observable<T> {
 		return this.http.post(this.apiPath, resource).pipe(
-			catchError(this.handleError),
-			map(this.jsonDataToResource)
+			map(this.jsonDataToResource.bind(this)),
+			catchError(this.handleError)
 		);
 	}
 
