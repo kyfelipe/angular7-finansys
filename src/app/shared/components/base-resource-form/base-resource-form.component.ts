@@ -7,9 +7,7 @@ import { BaseResourceModel } from '../../models/base-resource.model';
 import { BaseResourceService } from '../../services/base-resource.service';
 
 @Component({
-    selector: 'app-category-form',
-    templateUrl: './category-form.component.html',
-    styleUrls: ['./category-form.component.css']
+    selector: 'app-resource-form'
 })
 export abstract class BaseResourceFormComponent<T extends BaseResourceModel> implements OnInit, AfterContentChecked {
 	public currentAction: string;
