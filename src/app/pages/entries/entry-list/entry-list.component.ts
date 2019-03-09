@@ -1,33 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { EntryService } from '../shared/entry.service';
 import { Entry } from '../shared/entry.model';
+import { BaseResourceListComponent } from 'src/app/shared/components/base-resource-list/base-resource-list.component';
 
 @Component({
     selector: 'app-entry-list',
     templateUrl: './entry-list.component.html',
     styleUrls: ['./entry-list.component.css']
 })
-export class EntryListComponent implements OnInit {
-
-    entries: Entry[] = [];
-
-    constructor(private entryService: EntryService) { }
-
-    ngOnInit() {
-        this.entryService.getAll().subscribe(
-            (entries) => this.entries = entries.sort((a,b) => b.id - a.id),
-            (error) => console.log('Error ao carregar a lista de despesas/receitas', error)
-        );
+export class EntryListComponent extends BaseResourceListComponent<Entry> {
+    
+    constructor(protected entryService: EntryService) {
+        super(entryService);
     }
 
-    public deleteEntry(entry) {
-        const mustDelete = confirm('Deseja realmente deletar essa despesa/receita?');
-        
-        if(mustDelete) {
-            this.entryService.delete(entry.id).subscribe(
-                () => this.entries = this.entries.filter((element) => element !== entry),
-                (error) => console.log('Error ao tentar excluir despesa/receita: ', error)
-            );
-        }
-    }
 }
