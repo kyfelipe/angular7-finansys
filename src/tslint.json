@@ -13,6 +13,8 @@
             "app",
             "kebab-case"
         ],
-        "no-trailing-whitespace": false
+        "no-trailing-whitespace": false,
+        "no-input-rename": false
     }
 }
+
