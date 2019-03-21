@@ -11,7 +11,7 @@ import {FormControl} from '@angular/forms';
     styleUrls: ['./form-field-error.component.css']
 })
 export class FormFieldErrorComponent implements OnInit {
-    @Input('form-control') formControl: FormControl;
+    @Input() formControl: FormControl;
 
     constructor() { }
 

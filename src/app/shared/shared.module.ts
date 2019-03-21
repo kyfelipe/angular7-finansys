@@ -18,6 +18,7 @@ import { FormFieldErrorComponent } from './components/form-field-error/form-fiel
         ReactiveFormsModule,
         BreadCrumbComponent,
         PageHeaderComponent,
+        FormFieldErrorComponent,
         RouterModule
     ]
 })
