@@ -5,20 +5,24 @@ import { NgModule } from '@angular/core';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDatabase } from '../in-memory-database';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-    declarations: [],
+    declarations: [NavbarComponent],
     imports: [
         CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        RouterModule,
         HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase)
     ],
     exports: [
         BrowserModule,
         BrowserAnimationsModule,
-        HttpClientModule
+        HttpClientModule,
+        NavbarComponent
     ]
 })
 export class CoreModule { }
