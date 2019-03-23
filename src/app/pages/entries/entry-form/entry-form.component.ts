@@ -6,6 +6,7 @@ import { EntryService } from '../shared/entry.service';
 import { Category } from '../../categories/shared/category.model';
 import { CategoryService } from '../../categories/shared/category.service';
 import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form.component';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'app-entry-form',
@@ -42,7 +43,7 @@ export class EntryFormComponent extends BaseResourceFormComponent<Entry> impleme
         clear: 'Limpar'
     };
 
-    constructor(protected entryService: EntryService, protected categoryService: CategoryService, protected injector: Injector) {
+    constructor(protected entryService: EntryService, protected activatedRoute: ActivatedRoute, protected injector: Injector) {
         super(injector, new Entry(), entryService, Entry.fromJSON);
     }
 
@@ -83,6 +84,6 @@ export class EntryFormComponent extends BaseResourceFormComponent<Entry> impleme
     }
 
     protected loadCategories() {
-        this.categoryService.getAll().subscribe((categories) => this.categories = categories);
+        this.categories = this.activatedRoute.snapshot.data.categories;
     }
 }
