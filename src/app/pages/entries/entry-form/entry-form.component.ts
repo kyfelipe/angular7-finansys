@@ -1,12 +1,11 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import {AfterContentInit, Component, Injector, OnInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Validators } from '@angular/forms';
 
 import { Entry } from '../shared/entry.model';
 import { EntryService } from '../shared/entry.service';
 import { Category } from '../../categories/shared/category.model';
-import { CategoryService } from '../../categories/shared/category.service';
 import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form.component';
-import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'app-entry-form',

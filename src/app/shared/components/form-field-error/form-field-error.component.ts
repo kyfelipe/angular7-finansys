@@ -1,13 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'app-form-field-error',
-    template: `
-        <p class="text-danger">
-            {{errorMessage}}
-        </p>
-    `,
+    template: `<p class="text-danger">{{errorMessage}}</p>`,
     styleUrls: ['./form-field-error.component.css']
 })
 export class FormFieldErrorComponent implements OnInit {
