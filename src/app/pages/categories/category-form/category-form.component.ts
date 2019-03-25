@@ -12,19 +12,19 @@ import { BaseResourceFormComponent } from 'src/app/shared/components/base-resour
 })
 export class CategoryFormComponent extends BaseResourceFormComponent<Category> {
 
-	constructor(protected categoryService: CategoryService, protected injector: Injector) {
-		super(injector, new Category(), categoryService, Category.fromJSON);
-	}
+    constructor(protected categoryService: CategoryService, protected injector: Injector) {
+        super(injector, new Category(), categoryService, Category.fromJSON);
+    }
 
-	protected buildResourceForm(): void {
-		this.resourceForm = this.formBuilder.group({
-			id: [null],
-			name: [null, [Validators.required, Validators.minLength(2)]],
-			description: [null]
-		});
-	}
+    protected buildResourceForm(): void {
+        this.resourceForm = this.formBuilder.group({
+            id: [null],
+            name: [null, [Validators.required, Validators.minLength(2)]],
+            description: [null]
+        });
+    }
 
-	protected creationPageTitle(): string {
+    protected creationPageTitle(): string {
         return `Cadastro de nova Categoria`;
     }
 
